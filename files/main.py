@@ -1,4 +1,4 @@
-from klasses import Valid, Menu, Item
+from items import Valid, Menu, Item
 
 def main():
     valid, menu, purchase = Valid(), Menu(), Item()
