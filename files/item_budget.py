@@ -41,24 +41,24 @@ class Item(Budget):
     cart: list[dict] = []
     
     def item(self) -> dict:
-        return {'name':self._item_name, 'price':self._item_price, 'max_amount':self._max_amount, 'purchasing_amount':self._amount}
+        return {'item_name':self._item_name, 'item_price':self._item_price, 'amount_to_buy':self._amount_to_buy}
     item = property(item)
     
     @item.setter 
-    def item(self, new_vals: list):
-        self._item_name, self._item_price, self._max_amount, self._amount = new_vals
+    def item(self, new_vals: list) -> None:
+        self._item_name, self._item_price, self._max_amount, self._amount_to_buy = new_vals
     
     def add_item(self) -> None:
         item = self.item
         Item.cart.append(item)
-        self._budget = self.budget - item['price'] * item['purchasing_amount']
+        self._budget = self.budget - item['item_price'] * item['amount_to_buy']
     
     def remove_item(self) -> None:
         if not Item.cart: print('There is no item in the cart yet! Choose - Add item - from the menu by typing 1! ')
         else:
             delete_item = input('Enter the item you would like to remove! ').lower()
             for item in Item.cart:
-                if delete_item == item['name']:
+                if delete_item == item['item_name']:
                     Item.cart.remove(item)
-                    self._budget = self.budget + (item['price'] * item['purchasing_amount'])
+                    self._budget = self.budget + (item['item_price'] * item['amount_to_buy'])
                     print('Item deleted successfully! ')
