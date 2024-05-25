@@ -54,12 +54,11 @@ class Item(Budget):
         self._budget = self.budget - item['price'] * item['purchasing_amount']
     
     def remove_item(self) -> None:
-        items = Item.cart
-        if not items: print('There is no item in the cart yet! Choose - Add item - from the menu by typing 1! ')
-        else: 
+        if items := Item.cart:
             delete_item = input('Enter the item you would like to remove! ').lower()
             for item in items:
                 if delete_item == item['name']:
                     items.remove(item)
                     self._budget = self.budget + (item['price'] * item['purchasing_amount'])
                     print('Item deleted successfully! ')
+        elif not items: print('There is no item in the cart yet! Choose - Add item - from the menu by typing 1! ')
