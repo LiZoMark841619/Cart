@@ -24,4 +24,4 @@ def main():
         
 if __name__ == '__main__':
     main()
-    pydoc.writedoc('main')
+pydoc.writedoc('main')
