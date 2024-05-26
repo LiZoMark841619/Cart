@@ -1,5 +1,5 @@
 from valid_menu import Valid, Menu
-from budget_item import Budget, Item
+from budget_item import Item
 
 def main():
     valid, menu, item = Valid(), Menu(), Item()
