@@ -1,3 +1,4 @@
+import pydoc
 from valid_menu import Valid, Menu
 from budget_item import Item
 
@@ -20,4 +21,7 @@ def main():
         elif choice == 3: del item.add_to_cart
         elif choice == 4: print(f'Your current budget available is {item.budget} USD.')
         elif choice == 5: print('Good bye! '); return
-if __name__ == '__main__': main()
+        
+if __name__ == '__main__':
+    main()
+    pydoc.writedoc('main')
