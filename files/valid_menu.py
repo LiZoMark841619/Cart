@@ -18,7 +18,7 @@ class Menu:
         self._options = {0:'Set budget', 1:'Add item', 2:'View cart', 3:'Remove item', 4:'View budget', 5:'Exit'}
     
     @property
-    def options(self) -> int:
+    def options(self) -> dict:
         return self._options
         
     @options.setter
