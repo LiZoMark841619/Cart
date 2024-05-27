@@ -19,12 +19,10 @@ class Cart(Budget):
             
     def remove_item(self, item_name: str) -> None:
         item_name = item_name.lower()
-        if Cart.cart:
-            for item in Cart.cart:
-                if item_name == item['item_name']:
-                    Cart.cart.remove(item)
-                    self.budget += item['item_price'] * item['amount_to_buy']
-                    print('Item deleted successfully! ')
-                else:
-                    print('Item not found in the cart! ')
-        else: print('There is no item in the cart yet! ')
+        for item in Cart.cart:
+            if item_name == item['item_name']:
+                Cart.cart.remove(item)
+                self.budget += item['item_price'] * item['amount_to_buy']
+                print('Item deleted successfully! ')
+            else:
+                print('Item not found in the cart! ')
