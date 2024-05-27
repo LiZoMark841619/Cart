@@ -17,10 +17,10 @@ class Menu:
     def __init__(self) -> None:
         self._options = {0:'Set budget', 1:'Add item', 2:'View cart', 3:'Remove item', 4:'View budget', 5:'Exit'}
     
+    @property
     def options(self) -> int:
         return self._options
-    options = property(options)
-    
+        
     @options.setter
     def options(self, new_val: dict) -> None:
         self._options = new_val
