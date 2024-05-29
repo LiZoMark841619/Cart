@@ -25,10 +25,10 @@ def remove_item(valid, cart) -> None:
     if not Cart.to_purchase: print('You cannot remove items because your cart is Empty! ')
     else:
         item_names = [item['item_name'] for item in cart.to_purchase]
-        item_name = valid.get_valid_string(f'Enter the name of the items from {item_names} actual cart! ', *item_names)
-        max_quantity = [item['quantity_to_buy'] for item in cart.to_purchase if item['item_name'] == item_name]
+        item_to_remove = valid.get_valid_string(f'Enter the name of the items from {item_names} actual cart! ', *item_names)
+        max_quantity = [item['quantity_to_buy'] for item in cart.to_purchase if item['item_name'] == item_to_remove]
         quantity_to_remove = valid.get_valid_number('Enter the quantity to remove from the cart! ', 0, max_quantity[0])
-        cart.remove_item(item_name, quantity_to_remove)
+        cart.remove_item(item_to_remove, quantity_to_remove)
     
 def view_budget(cart) -> None: 
     print(f'Your current budget available is {cart.budget} USD. ')
