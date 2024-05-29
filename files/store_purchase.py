@@ -10,7 +10,6 @@ class Store:
         return self._store
     
 class Purchase:
-    
     def __init__(self) -> None:
         self.valid = Valid()
         self.menu = Menu()
@@ -23,10 +22,10 @@ class Purchase:
     def add_item(self) -> None:
         item_name = self.valid.get_valid_string(f'Enter the name of the Item from {self.store.items_for_sale} store! ', *self.store.items_for_sale.keys())
         item_price = self.store.items_for_sale[item_name]
-        max_amount = int(self.cart.balance / item_price)
-        if max_amount > 0:
-            amount_to_buy = self.valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_amount}! ', 0, max(0, max_amount))
-            self.cart.add_item(item_name, item_price, amount_to_buy)
+        max_quantity = int(self.cart.balance / item_price)
+        if max_quantity > 0:
+            quantity_to_buy = self.valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_quantity}! ', 0, max(0, max_quantity))
+            self.cart.add_item(item_name, item_price, quantity_to_buy)
             print('Item added successfully! ')
         else: print('You cannot add item because you have run out of budget! ')
 
