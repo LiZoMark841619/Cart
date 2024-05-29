@@ -1,9 +1,11 @@
 class Budget:    
     def __init__(self) -> None:
         self._budget = 0
+    
     @property
     def budget(self) -> int:
         return self._budget
+    
     @budget.setter 
     def budget(self, new_val: int) -> None:
         self._budget = new_val
