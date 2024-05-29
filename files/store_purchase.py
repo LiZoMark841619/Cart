@@ -35,7 +35,7 @@ class Purchase:
 
     def remove_item(self) -> None:
         item_names = [item['item_name'] for item in self.cart.to_purchase]
-        item_to_remove = self.valid.get_valid_string(f'Enter the ame of the Item from {item_names} actual Cart to remove! ', *item_names)
+        item_to_remove = self.valid.get_valid_string(f'Enter the name of the Item from {item_names} items of your Cart to remove! ', *item_names)
         max_quantity = [item['quantity_to_buy'] for item in self.cart.to_purchase if item['item_name'] == item_to_remove]
         quantity_to_remove = self.valid.get_valid_number(f'Enter the quantity (0-{max_quantity[0]}) to remove from the Cart! ', 0, max_quantity[0])
         self.cart.remove_item(item_to_remove, quantity_to_remove)
