@@ -34,12 +34,13 @@ def exit() -> None:
     
 def main() -> None:
     valid, menu, cart = Valid(), Menu(), Cart()
-    actions = {0: lambda: set_budget(valid, cart),
-               1: lambda: add_item(valid, cart) if cart.budget else print('Please set up your Budget first! '),
-               2: lambda: view_cart(cart),
-               3: lambda: remove_item(valid, cart) if cart.to_purchase else print('You cannot remove Item because your Cart is Empty! '),
-               4: lambda: view_budget(cart), 
-               5: lambda: exit()}
+    actions = {
+        0: lambda: set_budget(valid, cart),
+        1: lambda: add_item(valid, cart) if cart.budget else print('Please set up your Budget first! '),
+        2: lambda: view_cart(cart),
+        3: lambda: remove_item(valid, cart) if cart.to_purchase else print('You cannot remove Item because your Cart is Empty! '),
+        4: lambda: view_budget(cart), 
+        5: lambda: exit()}
     while True:
         choice = valid.get_valid_number(f'Choose your option from the menu below!\n{menu.options} ', 0, 5)
         if choice == 5: exit(); break
