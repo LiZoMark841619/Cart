@@ -15,7 +15,7 @@ class Valid:
 
 class Menu:
     def __init__(self) -> None:
-        self._options = {0:'Set budget', 1:'Add item', 2:'View cart', 3:'Remove item', 4:'View budget', 5:'Exit'}
+        self._options = dict(enumerate(['Set budget', 'Add item', 'View cart', 'Remove item', 'View budget', 'Exit']))
     
     @property
     def options(self) -> dict:

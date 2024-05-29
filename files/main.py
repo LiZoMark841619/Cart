@@ -5,12 +5,12 @@ STORE = {'apple':4, 'orange':6, 'lemon':4, 'pineapple':4, 'banana':6, 'cherry':8
 MIN_BUDGET, MAX_BUDGET = 10, 1000
 
 def set_budget(valid, cart) -> None:
-    cart.budget = valid.get_valid_number('Set your Budget from 10 to 1000 USD! ', 10, 1000)
+    cart.balance = valid.get_valid_number('Set your Budget from 10 to 1000 USD! ', 10, 1000)
 
 def add_item(valid, cart) -> None:
     item_name = valid.get_valid_string(f'Enter the name of the Item from {STORE} store! ', *STORE)
     item_price = STORE[item_name]
-    max_amount = int(cart.budget / item_price)
+    max_amount = int(cart.balance / item_price)
     amount_to_buy = valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_amount}! ', 0, max(0, max_amount))
     cart.add_item(item_name, item_price, amount_to_buy)
     print('Item added successfully! ')
@@ -27,7 +27,7 @@ def remove_item(valid, cart) -> None:
     print('Item deleted successfully! ')
     
 def view_budget(cart) -> None: 
-    print(f'Your current Budget available is {cart.budget} USD. ')
+    print(f'Your current Budget available is {cart.balance} USD. ')
 
 def exit() -> None:
     print('Thank you for choosing us! Good bye! ')
@@ -36,7 +36,7 @@ def main() -> None:
     valid, menu, cart = Valid(), Menu(), Cart()
     actions = {
         0: lambda: set_budget(valid, cart),
-        1: lambda: add_item(valid, cart) if cart.budget else print('Please set up your Budget first! '),
+        1: lambda: add_item(valid, cart) if cart.balance else print('Please set up your Budget first! '),
         2: lambda: view_cart(cart),
         3: lambda: remove_item(valid, cart) if cart.to_purchase else print('You cannot remove Item because your Cart is Empty! '),
         4: lambda: view_budget(cart), 
