@@ -3,11 +3,11 @@ from budget_cart import Cart
 
 class Store:
     def __init__(self) -> None:
-        self.store = {'apple':4, 'orange':6, 'lemon':4, 'pineapple':4, 'banana':6, 'cherry':8, 'blackberry':10}
+        self._store = {'apple':4, 'orange':6, 'lemon':4, 'pineapple':4, 'banana':6, 'cherry':8, 'blackberry':10}
     
     @property
     def items_for_sale(self) -> dict:
-        return self.store
+        return self._store
     
 class Purchase:
     
