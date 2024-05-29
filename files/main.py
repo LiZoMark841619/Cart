@@ -11,9 +11,11 @@ def add_item(valid, cart) -> None:
     item_name = valid.get_valid_string(f'Enter the name of the Item from {STORE} store! ', *STORE)
     item_price = STORE[item_name]
     max_amount = int(cart.balance / item_price)
-    amount_to_buy = valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_amount}! ', 0, max(0, max_amount))
-    cart.add_item(item_name, item_price, amount_to_buy)
-    print('Item added successfully! ')
+    if max_amount > 0:
+        amount_to_buy = valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_amount}! ', 0, max(0, max_amount))
+        cart.add_item(item_name, item_price, amount_to_buy)
+        print('Item added successfully! ')
+    else: print('You cannot add item because you have run out of budget! ')
 
 def view_cart(cart) -> None: 
     print(cart.to_purchase)
