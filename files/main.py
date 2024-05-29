@@ -32,8 +32,8 @@ def view_budget(cart) -> None:
 def exit() -> None:
     print('Thank you for choosing us! Good bye! ')
     
-def main() -> None:
-    valid, menu, cart = Valid(), Menu(), Cart()
+def actions_() -> dict:
+    valid, cart = Valid(), Cart()
     actions = {
         0: lambda: set_budget(valid, cart),
         1: lambda: add_item(valid, cart) if cart.balance else print('Please set up your Budget first! '),
@@ -41,8 +41,17 @@ def main() -> None:
         3: lambda: remove_item(valid, cart) if cart.to_purchase else print('You cannot remove Item because your Cart is Empty! '),
         4: lambda: view_budget(cart), 
         5: lambda: exit()}
+    return actions
+
+def menu_() -> int:
+    valid, menu = Valid(), Menu()
+    return valid.get_valid_number(f'Choose your option from the menu below!\n{menu.options} ', 0, 5)
+    
+def main():
+    actions = actions_()
     while True:
-        choice = valid.get_valid_number(f'Choose your option from the menu below!\n{menu.options} ', 0, 5)
+        choice = menu_()
         if choice == 5: exit(); break
         actions[choice]()
+        
 if __name__ == '__main__':  main()

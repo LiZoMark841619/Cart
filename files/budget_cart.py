@@ -4,11 +4,11 @@ class Budget:
     
     @property
     def balance(self) -> int:
-        return self._balance
+        return self._budget
     
     @balance.setter 
     def balance(self, new_val: int) -> None:
-        self._balance = new_val
+        self._budget = new_val
 
 class Cart(Budget):
     def __init__(self) -> None:
@@ -17,11 +17,7 @@ class Cart(Budget):
             
     def add_item(self, item_name: str, item_price: int, quantity_to_buy: int) -> None:
         self.to_purchase.append(
-            {'item_name':item_name,
-            'item_price':item_price,
-            'quantity_to_buy':quantity_to_buy,
-            'total':item_price*quantity_to_buy
-            })
+            {'item_name':item_name, 'item_price':item_price, 'quantity_to_buy':quantity_to_buy, 'total':item_price*quantity_to_buy})
         self.update_balance(-item_price * quantity_to_buy)
 
     def remove_item(self, item_name: str, quantity_to_remove: int) -> None:
