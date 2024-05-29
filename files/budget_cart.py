@@ -23,8 +23,11 @@ class Cart(Budget):
     def remove_item(self, item_name: str, quantity_to_remove: int) -> None:
         for item in self.to_purchase:
             if item_name.lower() == item['item_name']:
-                item['quantity_to_buy'] -= quantity_to_remove
-                item['total'] = item['item_price'] * item['quantity_to_buy']
+                if quantity_to_remove == item['quantity_to_buy']:
+                    self.to_purchase.remove(item)
+                else:
+                    item['quantity_to_buy'] -= quantity_to_remove
+                    item['total'] = item['item_price'] * item['quantity_to_buy']
                 self.update_balance(item['item_price'] * quantity_to_remove)
 
     def update_balance(self, amount: int) -> None:
