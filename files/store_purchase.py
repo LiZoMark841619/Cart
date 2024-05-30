@@ -1,9 +1,10 @@
 from valid_menu import Valid, Menu
 from budget_cart import Cart
+from types import MappingProxyType
 
 class Store:
     def __init__(self) -> None:
-        self._store = {'apple':4, 'orange':6, 'lemon':4, 'pineapple':4, 'banana':6, 'cherry':8, 'blackberry':10}
+        self._store = MappingProxyType({'apple':4, 'orange':6, 'lemon':4, 'pineapple':4, 'banana':6, 'cherry':8, 'blackberry':10})
     
     @property
     def items_for_sale(self) -> dict:
@@ -20,11 +21,12 @@ class Purchase:
         self.cart.balance = self.valid.get_valid_number('Set your Budget from 10 to 1000 USD! ', 10, 1000)
 
     def add_item(self) -> None:
-        item_name = self.valid.get_valid_string(f'Enter the name of the Item from {self.store.items_for_sale} store! ', *self.store.items_for_sale.keys())
-        item_price = self.store.items_for_sale[item_name]
+        items_for_sale = self.store.items_for_sale
+        item_name = self.valid.get_valid_string(f'Enter the name of the Item from {items_for_sale} store! ', *items_for_sale.keys())
+        item_price = items_for_sale[item_name]
         max_quantity = int(self.cart.balance / item_price)
         if max_quantity > 0:
-            quantity_to_buy = self.valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_quantity}! ', 0, max(0, max_quantity))
+            quantity_to_buy = self.valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_quantity}! ', 0, max_quantity)
             self.cart.add_item(item_name, item_price, quantity_to_buy)
             print('Item added successfully! ')
         else: print('You cannot add item because you have run out of budget! ')
