@@ -30,6 +30,7 @@ class Purchase:
             self.cart.add_item(item_name, item_price, quantity_to_buy)
             print('Item added successfully! ')
         else: print('You cannot add item because you have run out of budget! ')
+        self.cart.update_cart(item_name)
 
     def view_cart(self) -> None: 
         print(self.cart.to_purchase)
