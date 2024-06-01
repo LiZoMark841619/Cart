@@ -1,5 +1,5 @@
 from valid_menu import Valid, Menu
-from budget_cart import Cart
+from files.budget_item_cart import Cart
 from types import MappingProxyType
 
 class Store:
@@ -30,10 +30,10 @@ class Purchase:
             self.cart.add_item(item_name, item_price, quantity_to_buy)
             print('Item added successfully! ')
         else: print('You cannot add item because you have run out of budget! ')
-        self.cart.update_cart(item_name)
 
     def view_cart(self) -> None: 
-        print(self.cart.to_purchase)
+        for item in self.cart.to_purchase:
+            print(item)
 
     def remove_item(self) -> None:
         item_names = [item['item_name'] for item in self.cart.to_purchase]
