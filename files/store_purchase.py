@@ -1,5 +1,5 @@
 from valid_menu import Valid, Menu
-from files.budget_item_cart import Cart
+from budget_item_cart import Cart
 from types import MappingProxyType
 
 class Store:
