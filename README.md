@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * Quick summary: This is an Item purchasing program including Valid, Menu, Budget Cart classes which handle item registering and purchasing process. It can run in the terminal and can be used in REPL as an imported module.
-* Version: 1.0
+* Version: 2.0
 
 ### How do I get set up? ###
 
