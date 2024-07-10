@@ -1,27 +1,18 @@
 class Budget:    
     def __init__(self) -> None:
-        self._budget = 0
+        self.__budget = 0
     
-    @property
-    def balance(self) -> int:
-        return self._budget
-    
-    @balance.setter 
-    def balance(self, new_val: int) -> None:
-        self._budget = new_val
+    def __str__(self) -> str:
+        return f'{self.__budget}'
 
 class Item:
     def __init__(self, item_name: str, item_price: int, quantity_to_buy: int) -> None:
-        self.item_name = item_name
-        self.item_price = item_price
-        self.quantity_to_buy = quantity_to_buy
-        self.total = item_price*quantity_to_buy
+        self.item_name, self.item_price, self.quantity_to_buy, self.total = item_name, item_price, quantity_to_buy, item_price*quantity_to_buy
 
 class Cart:
     def __init__(self) -> None:
-        self.balance = Budget()
-        self.to_purchase = []
-            
+        self.balance, self.to_purchase = Budget(), []
+
     def add_item(self, item_name: str, item_price: int, quantity_to_buy: int) -> None:
         item = Item(item_name, item_price, quantity_to_buy)
         self.to_purchase.append(item.__dict__)

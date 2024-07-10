@@ -4,18 +4,15 @@ from types import MappingProxyType
 
 class Store:
     def __init__(self) -> None:
-        self._store = MappingProxyType({'apple':4, 'orange':6, 'lemon':4, 'pineapple':4, 'banana':6, 'cherry':8, 'blackberry':10})
+        self.__store = MappingProxyType({'apple':4, 'orange':6, 'lemon':4, 'pineapple':4, 'banana':6, 'cherry':8, 'blackberry':10})
     
     @property
     def items_for_sale(self) -> dict:
-        return self._store
+        return self.__store
     
 class Purchase:
     def __init__(self) -> None:
-        self.valid = Valid()
-        self.menu = Menu()
-        self.store = Store()
-        self.cart = Cart()
+        self.valid, self.menu, self.store, self.cart  = Valid(), Menu(), Store(), Cart()
 
     def set_budget(self) -> None:
         self.cart.balance = self.valid.get_valid_number('Set your Budget from 10 to 1000 USD! ', 10, 1000)
@@ -31,9 +28,8 @@ class Purchase:
             print('Item added successfully! ')
         else: print('You cannot add item because you have run out of budget! ')
 
-    def view_cart(self) -> None: 
-        for item in self.cart.to_purchase:
-            print(item)
+    def view_cart(self) -> None:
+        for item in self.cart.to_purchase: print(item)
 
     def remove_item(self) -> None:
         item_names = [item['item_name'] for item in self.cart.to_purchase]
@@ -48,17 +44,17 @@ class Purchase:
 
     @staticmethod
     def exit() -> None:
-        print('Thank you for choosing us! Good bye! ')
-    
+        import sys
+        sys.exit()
+
     def actions_(self) -> dict:
-        actions = {
+        return {
             0: lambda: self.set_budget(),
             1: lambda: self.add_item() if self.cart.balance else print('Please set up your Budget first! '),
-            2: lambda: self.view_cart(),
-            3: lambda: self.remove_item() if self.cart.to_purchase else print('You cannot remove Item because your Cart is Empty! '),
+            2: lambda: self.view_cart() if self.cart.to_purchase else print('Your Cart is empty! First add Item to your Cart!'),
+            3: lambda: self.remove_item() if self.cart.to_purchase else print('Your Cart is empty! First add Item to your Cart!'),
             4: lambda: self.view_budget(), 
             5: lambda: exit()}
-        return actions
 
     def menu_(self) -> int:
         return self.valid.get_valid_number(f'Choose your option from the menu below!\n{self.menu.options} ', 0, 5)
