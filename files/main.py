@@ -6,5 +6,4 @@ def main():
     while True:
         choice = purchase.menu_()
         actions[choice]()
-        
 if __name__ == '__main__':  main()
