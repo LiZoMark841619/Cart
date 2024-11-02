@@ -7,11 +7,15 @@ class Budget:
 
 class Item:
     def __init__(self, item_name: str, item_price: int, quantity_to_buy: int) -> None:
-        self.item_name, self.item_price, self.quantity_to_buy, self.total = item_name, item_price, quantity_to_buy, item_price*quantity_to_buy
+        self.item_name = item_name
+        self.item_price = item_price
+        self.quantity_to_buy = quantity_to_buy
+        self.total = item_price * quantity_to_buy
 
 class Cart:
     def __init__(self) -> None:
-        self.balance, self.to_purchase = Budget(), []
+        self.balance = Budget()
+        self.to_purchase = []
 
     def add_item(self, item_name: str, item_price: int, quantity_to_buy: int) -> None:
         item = Item(item_name, item_price, quantity_to_buy)

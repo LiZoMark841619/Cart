@@ -3,13 +3,18 @@ class Valid:
         while True:
             try:
                 value = int(input(prompt))
-                return value if min_val <= value <= max_val else print('Invalid number! ')
-            except ValueError: print('Invalid value! ')
+                if min_val <= value <= max_val:
+                    return value
+                print('Invalid number! ')
+            except ValueError:
+                print('Invalid value! ')
             
     def get_valid_string(self, prompt: str, *args) -> str:
         while True:
             value = input(prompt).lower()
-            return value if value in args else print('Invalid value! ')
+            if value in args:
+                return value
+            print('Invalid value! ')
 
 class Menu:
     def __init__(self) -> None:

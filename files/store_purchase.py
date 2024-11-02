@@ -12,7 +12,10 @@ class Store:
     
 class Purchase:
     def __init__(self) -> None:
-        self.valid, self.menu, self.store, self.cart  = Valid(), Menu(), Store(), Cart()
+        self.valid = Valid()
+        self.menu = Menu()
+        self.store = Store()
+        self.cart  = Cart()
 
     def set_budget(self) -> None:
         self.cart.balance = self.valid.get_valid_number('Set your Budget from 10 to 1000 USD! ', 10, 1000)
