@@ -29,6 +29,7 @@ class Purchase:
             quantity_to_buy = self.valid.get_valid_number(f'Enter the quantity of the Item to buy from 0 to {max_quantity}! ', 0, max_quantity)
             self.cart.add_item(item_name, item_price, quantity_to_buy)
             print('Item added successfully! ')
+            self.cart.update_cart(item_name, quantity_to_buy)
         else: print('You cannot add item because you have run out of budget! ')
 
     def view_cart(self) -> None:

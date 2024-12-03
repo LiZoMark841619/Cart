@@ -34,3 +34,8 @@ class Cart:
 
     def update_balance(self, amount: int) -> None:
         self.balance += amount
+    
+    def update_cart(self, item_name: str, quantity_to_buy: int) -> None:
+        for item in self.to_purchase:
+            if item['item_name'] == item_name:
+                item['quantity_to_buy'] += quantity_to_buy          
